@@ -405,7 +405,7 @@ var LibraryEmbind = {
   $heap32VectorToArray: function(count, firstElement) {
     var array = [];
     for (var i = 0; i < count; i++) {
-        array.push(HEAP32[(firstElement >> 2) + i]);
+        array.push({{{ makeGetValue('firstElement', 'i * POINTER_SIZE', '*') }}});
     }
     return array;
   },
