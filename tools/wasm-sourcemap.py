@@ -67,8 +67,11 @@ class Prefixes:
         else:
           result = p['replacement'] + name[len(p['prefix'])::]
         break
-    self.cache[name] = result
-    return result
+    if result is None:
+        self.cache[name] = name
+    else:
+        self.cache[name] = result
+    return self.cache[name]
 
 
 # SourceMapPrefixes contains resolver for file names that are:
